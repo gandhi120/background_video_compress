@@ -52,6 +52,7 @@ function CameraScreen() {
     <View style={{flex: 1}}>
       <Camera
         video={true}
+        audio={true}
         ref={camera}
         style={{flex: 1}}
         device={device}
