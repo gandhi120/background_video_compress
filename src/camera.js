@@ -31,6 +31,7 @@ function CameraScreen() {
         const params = {
           path: Platform.OS === 'android' ? targetPath : newPath,
         };
+        setIsRecording(false);
         navigation.navigate('CapturePreview', {...params});
       },
       onRecordingError: error => console.error(error),
@@ -84,13 +85,12 @@ function CameraScreen() {
             height: 70,
             width: 70,
             borderRadius: 100,
-            backgroundColor: 'white',
+            backgroundColor: 'red',
             position: 'absolute',
             bottom: 20,
             alignSelf: 'center',
-          }}>
-          <Text style={{color: 'black'}}>STOP</Text>
-        </TouchableOpacity>
+          }}
+        />
       )}
     </View>
   );
