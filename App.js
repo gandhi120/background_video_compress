@@ -1,10 +1,17 @@
 import React, {Component, useEffect} from 'react';
-import {Text, TouchableOpacity, View, PermissionsAndroid} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  PermissionsAndroid,
+  Platform,
+} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CameraScreen from './src/camera';
 import CapturePreview from './src/capturPreview';
 import RNFetchBlob from 'rn-fetch-blob';
+import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +47,14 @@ function HomeScreen() {
       } catch (err) {
         console.warn(err);
         return false;
+      }
+    } else {
+      const result = await request(PERMISSIONS.IOS.MICROPHONE);
+
+      if (result === RESULTS.GRANTED) {
+        console.log('Microphone permission granted');
+      } else {
+        console.log('Microphone permission denied');
       }
     }
     return true;

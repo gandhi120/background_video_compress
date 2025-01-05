@@ -3,6 +3,7 @@ import {Platform, Text, TouchableOpacity, View} from 'react-native';
 import {Camera, useCameraDevice} from 'react-native-vision-camera';
 import {useNavigation} from '@react-navigation/native';
 import RNFetchBlob from 'rn-fetch-blob';
+import RNFS from 'react-native-fs';
 
 function CameraScreen() {
   const navigation = useNavigation();
@@ -18,12 +19,17 @@ function CameraScreen() {
       onRecordingFinished: async video => {
         console.log('video', video);
         const date = Date.now();
-        const newPath = `file://${video.path}`;
-        const targetPath = `${RNFetchBlob.fs.dirs.DCIMDir}/.digiQC/video/${date}.mp4`;
-        await saveImageToDCIM(newPath, targetPath);
+        let newPath = `file://${video.path}`;
+        let targetPath = '';
+        if (Platform.OS === 'android') {
+          targetPath = `${RNFetchBlob.fs.dirs.DCIMDir}/.digiQC/video/${date}.mp4`;
+          await saveImageToDCIM(newPath, targetPath);
+        } else {
+          newPath = video.path;
+        }
 
         const params = {
-          path: Platform.OS === 'android' ? targetPath : video.path,
+          path: Platform.OS === 'android' ? targetPath : newPath,
         };
         navigation.navigate('CapturePreview', {...params});
       },
@@ -52,7 +58,7 @@ function CameraScreen() {
     <View style={{flex: 1}}>
       <Camera
         video={true}
-        audio={true}
+        // audio={true}
         ref={camera}
         style={{flex: 1}}
         device={device}

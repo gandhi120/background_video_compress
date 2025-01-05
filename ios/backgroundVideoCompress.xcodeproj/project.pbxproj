@@ -11,10 +11,10 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		34D11C1B575D8098A3D4CE99 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5AB0016A8E0DA691935EC2 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */; };
+		4EF5DAAA5B3132044331CA9B /* libPods-backgroundVideoCompress.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CCB94B341B656E7C76C290 /* libPods-backgroundVideoCompress.a */; };
 		65A6A287AAD534631499E11B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0A4827997D8EF640A9C7F /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D041D763143781E76BCDE4C2 /* libPods-backgroundVideoCompress.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC0B13982D283468256DE46 /* libPods-backgroundVideoCompress.a */; };
+		CFAEC500D27C9980573EB75E /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39E146251257FF1FF46E0694 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +31,7 @@
 		00E356EE1AD99517003FC87E /* backgroundVideoCompressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = backgroundVideoCompressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* backgroundVideoCompressTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = backgroundVideoCompressTests.m; sourceTree = "<group>"; };
+		0D0AD1DA5723E8B41AF0906F /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* backgroundVideoCompress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backgroundVideoCompress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = backgroundVideoCompress/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = backgroundVideoCompress/AppDelegate.mm; sourceTree = "<group>"; };
@@ -38,15 +39,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = backgroundVideoCompress/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = backgroundVideoCompress/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = backgroundVideoCompress/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		351D91B3D684F0BF0BB2814E /* Pods-backgroundVideoCompress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress.release.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress.release.xcconfig"; sourceTree = "<group>"; };
-		5EC0B13982D283468256DE46 /* libPods-backgroundVideoCompress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-backgroundVideoCompress.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DE75997AB9E744FD89C5462 /* Pods-backgroundVideoCompress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress.debug.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress.debug.xcconfig"; sourceTree = "<group>"; };
+		34F1CBE4CCD23B20EFB84920 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig"; sourceTree = "<group>"; };
+		39E146251257FF1FF46E0694 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-backgroundVideoCompress-backgroundVideoCompressTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54CB701B9514D24F74F2EDDF /* Pods-backgroundVideoCompress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress.release.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = backgroundVideoCompress/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8C5AB0016A8E0DA691935EC2 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-backgroundVideoCompress-backgroundVideoCompressTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB0A4827997D8EF640A9C7F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = backgroundVideoCompress/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		D5BFF47B4978FE07B27F8F81 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig"; sourceTree = "<group>"; };
-		D70B15B32C14DCD52633BA0F /* Pods-backgroundVideoCompress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress.debug.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress.debug.xcconfig"; sourceTree = "<group>"; };
+		D8CCB94B341B656E7C76C290 /* libPods-backgroundVideoCompress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-backgroundVideoCompress.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F79B88E491C69A8154B1D360 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig"; path = "Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34D11C1B575D8098A3D4CE99 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a in Frameworks */,
+				CFAEC500D27C9980573EB75E /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D041D763143781E76BCDE4C2 /* libPods-backgroundVideoCompress.a in Frameworks */,
+				4EF5DAAA5B3132044331CA9B /* libPods-backgroundVideoCompress.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5EC0B13982D283468256DE46 /* libPods-backgroundVideoCompress.a */,
-				8C5AB0016A8E0DA691935EC2 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */,
+				D8CCB94B341B656E7C76C290 /* libPods-backgroundVideoCompress.a */,
+				39E146251257FF1FF46E0694 /* libPods-backgroundVideoCompress-backgroundVideoCompressTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D70B15B32C14DCD52633BA0F /* Pods-backgroundVideoCompress.debug.xcconfig */,
-				351D91B3D684F0BF0BB2814E /* Pods-backgroundVideoCompress.release.xcconfig */,
-				F79B88E491C69A8154B1D360 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */,
-				D5BFF47B4978FE07B27F8F81 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */,
+				2DE75997AB9E744FD89C5462 /* Pods-backgroundVideoCompress.debug.xcconfig */,
+				54CB701B9514D24F74F2EDDF /* Pods-backgroundVideoCompress.release.xcconfig */,
+				0D0AD1DA5723E8B41AF0906F /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */,
+				34F1CBE4CCD23B20EFB84920 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "backgroundVideoCompressTests" */;
 			buildPhases = (
-				D6F579939B1AA80DCB66E4C5 /* [CP] Check Pods Manifest.lock */,
+				3CB9C13D13D577FCBC7E950E /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3AADF7CBFB8CBF3283F1E966 /* [CP] Embed Pods Frameworks */,
-				F2AF5FB2E1F5DFB64BF727C4 /* [CP] Copy Pods Resources */,
+				F682BA89E17099F8000A0BF4 /* [CP] Embed Pods Frameworks */,
+				DCF07184B4815767364E8C00 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,13 +181,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "backgroundVideoCompress" */;
 			buildPhases = (
-				58C2A0A5F59C4C675BAA89ED /* [CP] Check Pods Manifest.lock */,
+				A3E599C3997EEAB4A858EC90 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FE85879599AB5E54DBB681E2 /* [CP] Embed Pods Frameworks */,
-				77716415EDC3B2E763666D2B /* [CP] Copy Pods Resources */,
+				A5278ABBE35BAF5D6F73C575 /* [CP] Embed Pods Frameworks */,
+				3E9A26539752E0018816F0D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,63 +271,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		3AADF7CBFB8CBF3283F1E966 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		58C2A0A5F59C4C675BAA89ED /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-backgroundVideoCompress-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		77716415EDC3B2E763666D2B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6F579939B1AA80DCB66E4C5 /* [CP] Check Pods Manifest.lock */ = {
+		3CB9C13D13D577FCBC7E950E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -349,7 +293,63 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F2AF5FB2E1F5DFB64BF727C4 /* [CP] Copy Pods Resources */ = {
+		3E9A26539752E0018816F0D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3E599C3997EEAB4A858EC90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-backgroundVideoCompress-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5278ABBE35BAF5D6F73C575 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCF07184B4815767364E8C00 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,21 +366,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE85879599AB5E54DBB681E2 /* [CP] Embed Pods Frameworks */ = {
+		F682BA89E17099F8000A0BF4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress/Pods-backgroundVideoCompress-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-backgroundVideoCompress-backgroundVideoCompressTests/Pods-backgroundVideoCompress-backgroundVideoCompressTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,7 +416,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F79B88E491C69A8154B1D360 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */;
+			baseConfigurationReference = 0D0AD1DA5723E8B41AF0906F /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -443,7 +443,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5BFF47B4978FE07B27F8F81 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */;
+			baseConfigurationReference = 34F1CBE4CCD23B20EFB84920 /* Pods-backgroundVideoCompress-backgroundVideoCompressTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -467,7 +467,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D70B15B32C14DCD52633BA0F /* Pods-backgroundVideoCompress.debug.xcconfig */;
+			baseConfigurationReference = 2DE75997AB9E744FD89C5462 /* Pods-backgroundVideoCompress.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -495,7 +495,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 351D91B3D684F0BF0BB2814E /* Pods-backgroundVideoCompress.release.xcconfig */;
+			baseConfigurationReference = 54CB701B9514D24F74F2EDDF /* Pods-backgroundVideoCompress.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
