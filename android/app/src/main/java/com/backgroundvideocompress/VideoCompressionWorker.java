@@ -13,6 +13,8 @@ import com.google.common.util.concurrent.SettableFuture;
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.Random;
+
 
 public class VideoCompressionWorker extends ListenableWorker {
 
@@ -34,7 +36,12 @@ public class VideoCompressionWorker extends ListenableWorker {
 //                String outputVideoPath = getInputData().getString("outputVideoPath");
                 String outputDir = getApplicationContext().getCacheDir().getPath();
                 // Define output file path
-                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/" + "compressed_video.mp4";
+                Random random = new Random();
+                int randomInt = random.nextInt(10000); // Generates a random integer between 0 and 9999
+
+                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/compressed_video_" + randomInt + ".mp4";
+
+//                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/" + "compressed_video.mp4";
                 Log.d("TAG:inputVideoPath", "startWork::inputVideoPath "+inputVideoPath);
 
                 Log.d("TAG", "startWork: "+outputVideoPath);
