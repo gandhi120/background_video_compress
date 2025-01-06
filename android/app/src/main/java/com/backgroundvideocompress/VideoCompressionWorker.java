@@ -1,6 +1,8 @@
 package com.backgroundvideocompress;
 
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.work.ListenableWorker;
 import androidx.work.WorkerParameters;
@@ -28,8 +30,15 @@ public class VideoCompressionWorker extends ListenableWorker {
 
         executorService.submit(() -> {
             try {
-                String inputVideoPath = getInputData().getString("inputVideoPath");
-                String outputVideoPath = getInputData().getString("outputVideoPath");
+                String inputVideoPath = getInputData().getString("videoPath");
+//                String outputVideoPath = getInputData().getString("outputVideoPath");
+                String outputDir = getApplicationContext().getCacheDir().getPath();
+                // Define output file path
+                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/" + "compressed_video.mp4";
+                Log.d("TAG:inputVideoPath", "startWork::inputVideoPath "+inputVideoPath);
+
+                Log.d("TAG", "startWork: "+outputVideoPath);
+
 
                 if (inputVideoPath == null || outputVideoPath == null) {
                     future.set(Result.failure());
@@ -37,6 +46,7 @@ public class VideoCompressionWorker extends ListenableWorker {
                 }
 
                 boolean compressionSuccess = compressVideo(inputVideoPath, outputVideoPath);
+                Log.d("TAG", "startWork:compressionSuccess "+compressionSuccess);
 
                 if (compressionSuccess) {
                     future.set(Result.success());
@@ -44,6 +54,8 @@ public class VideoCompressionWorker extends ListenableWorker {
                     future.set(Result.failure());
                 }
             } catch (Exception e) {
+                Log.d("TAG", "startWork:exception "+e);
+
                 e.printStackTrace();
                 future.set(Result.failure());
             }
@@ -54,19 +66,44 @@ public class VideoCompressionWorker extends ListenableWorker {
 
     private boolean compressVideo(String inputPath, String outputPath) {
         // FFmpeg command for compression
+        File inputFile = new File(inputPath);
+        File outputFile = new File(outputPath);
+
+        if (!inputFile.exists()) {
+            Log.e("VideoCompression", "Input file does not exist: " + inputPath);
+            return false;
+        }
         String cmd = String.format(
                 "-i %s -vcodec libx264 -crf 28 -preset ultrafast %s",
                 inputPath, outputPath
         );
+        Log.d("VideoCompression", "Executing FFmpeg command: " + cmd);
 
         int rc = FFmpeg.execute(cmd);
 
         if (rc == 0) {
+            Log.d("VideoCompression", "Compression successful");
+
             // Compression successful
             return true;
         } else {
+            Log.e("VideoCompression", "Compression failed with RC: " + rc);
+            printFFmpegLogs();
+
             // Compression failed
             return false;
         }
+    }
+    // Helper method to print FFmpeg logs
+    private void printFFmpegLogs() {
+        com.arthenica.mobileffmpeg.Config.enableLogCallback(message -> {
+            Log.d("FFmpegLog", message.getText());
+        });
+
+        com.arthenica.mobileffmpeg.Config.enableStatisticsCallback(statistics -> {
+            Log.d("FFmpegStats", "Frame: " + statistics.getVideoFrameNumber() +
+                    ", Time: " + statistics.getTime() +
+                    ", FPS: " + statistics.getVideoFps());
+        });
     }
 }

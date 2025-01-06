@@ -1,5 +1,5 @@
 import {useEffect, useRef} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View, NativeModules} from 'react-native';
 import {
   Camera,
   useCameraDevice,
@@ -7,25 +7,18 @@ import {
   useMicrophonePermission,
 } from 'react-native-vision-camera';
 import Video, {VideoRef} from 'react-native-video';
+const {VideoModule} = NativeModules;
 
 function CapturePreview({route}) {
   console.log('this.props.route.params', route.params);
 
   const {path} = route.params;
-  //   const { videoPath } = route.params || {};
-
-  //   return (
-  //     <View style={{flex: 1}}>
-  //       {/* <Text>hello</Text> */}
-  //       <Image
-  //         style={{height: '100%', width: '100%', resizeMode: 'cover'}}
-  //         source={{
-  //           uri: path,
-  //         }}
-  //       />
-  //     </View>
-  //   );
-
+  useEffect(() => {
+    console.log('video compress images');
+    setTimeout(() => {
+      VideoModule.startVideoCompression(path);
+    }, 3000);
+  }, []);
   return (
     <Video
       source={{uri: path}}

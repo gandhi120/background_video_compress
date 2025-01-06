@@ -1,9 +1,8 @@
 import {useRef, useState} from 'react';
-import {Platform, Text, TouchableOpacity, View} from 'react-native';
+import {Platform, TouchableOpacity, View} from 'react-native';
 import {Camera, useCameraDevice} from 'react-native-vision-camera';
 import {useNavigation} from '@react-navigation/native';
 import RNFetchBlob from 'rn-fetch-blob';
-import RNFS from 'react-native-fs';
 
 function CameraScreen() {
   const navigation = useNavigation();
@@ -59,7 +58,7 @@ function CameraScreen() {
     <View style={{flex: 1}}>
       <Camera
         video={true}
-        // audio={true}
+        audio={true}
         ref={camera}
         style={{flex: 1}}
         device={device}
