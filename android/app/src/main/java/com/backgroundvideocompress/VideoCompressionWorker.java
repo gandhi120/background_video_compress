@@ -73,11 +73,22 @@ public class VideoCompressionWorker extends ListenableWorker {
             Log.e("VideoCompression", "Input file does not exist: " + inputPath);
             return false;
         }
+
+        if (outputFile.exists()) {
+            boolean deleted = outputFile.delete();
+            if (!deleted) {
+                Log.e("VideoCompression", "Failed to delete existing output file");
+                return false;
+            }
+        }
         String cmd = String.format(
-                "-i %s -vcodec libx264 -crf 28 -preset ultrafast %s",
+                "-i %s -vcodec libx264 -crf 30 -preset veryfast -acodec aac -b:a 96k -movflags +faststart %s",
                 inputPath, outputPath
         );
         Log.d("VideoCompression", "Executing FFmpeg command: " + cmd);
+        com.arthenica.mobileffmpeg.Config.enableLogCallback(message -> {
+            Log.d("FFmpegLog", message.getText());
+        });
 
         int rc = FFmpeg.execute(cmd);
 
