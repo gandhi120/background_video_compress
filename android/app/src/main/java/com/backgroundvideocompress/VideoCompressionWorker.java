@@ -11,10 +11,11 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.Random;
-
 
 public class VideoCompressionWorker extends ListenableWorker {
 
@@ -22,7 +23,7 @@ public class VideoCompressionWorker extends ListenableWorker {
 
     public VideoCompressionWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
-        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newFixedThreadPool(4); // Use 4 threads for chunk compression
     }
 
     @NonNull
@@ -33,95 +34,145 @@ public class VideoCompressionWorker extends ListenableWorker {
         executorService.submit(() -> {
             try {
                 String inputVideoPath = getInputData().getString("videoPath");
-//                String outputVideoPath = getInputData().getString("outputVideoPath");
-                String outputDir = getApplicationContext().getCacheDir().getPath();
-                // Define output file path
-                Random random = new Random();
-                int randomInt = random.nextInt(10000); // Generates a random integer between 0 and 9999
+                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/final_compressed_video.mp4";
 
-                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/compressed_video_" + randomInt + ".mp4";
-
-//                String outputVideoPath = "/storage/emulated/0/DCIM/.digiQC/video/" + "compressed_video.mp4";
-                Log.d("TAG:inputVideoPath", "startWork::inputVideoPath "+inputVideoPath);
-
-                Log.d("TAG", "startWork: "+outputVideoPath);
-
-
-                if (inputVideoPath == null || outputVideoPath == null) {
+                String chunkDir = getApplicationContext().getCacheDir().getPath() + "/chunks";
+//                String chunkDir = "/storage/emulated/0/DCIM/.digiQC/video/chunks";
+                String compressedChunkDir = getApplicationContext().getCacheDir().getPath() + "/compressed_chunks";
+//                String compressedChunkDir =  "/storage/emulated/0/DCIM/.digiQC/video/compressed_chunks";
+                if (inputVideoPath == null) {
                     future.set(Result.failure());
                     return;
                 }
 
-                boolean compressionSuccess = compressVideo(inputVideoPath, outputVideoPath);
-                Log.d("TAG", "startWork:compressionSuccess "+compressionSuccess);
+                splitVideo(inputVideoPath, chunkDir);
+                compressChunks(chunkDir, compressedChunkDir);
+                mergeChunks(compressedChunkDir, outputVideoPath);
 
-                if (compressionSuccess) {
-                    future.set(Result.success());
-                } else {
-                    future.set(Result.failure());
-                }
+                future.set(Result.success());
             } catch (Exception e) {
-                Log.d("TAG", "startWork:exception "+e);
-
+                Log.e("VideoCompressionWorker", "Exception in startWork: " + e.getMessage());
                 e.printStackTrace();
                 future.set(Result.failure());
+            } finally {
+                executorService.shutdown();
             }
         });
 
         return future;
     }
 
-    private boolean compressVideo(String inputPath, String outputPath) {
-        // FFmpeg command for compression
-        File inputFile = new File(inputPath);
-        File outputFile = new File(outputPath);
-
-        if (!inputFile.exists()) {
-            Log.e("VideoCompression", "Input file does not exist: " + inputPath);
-            return false;
-        }
-
-        if (outputFile.exists()) {
-            boolean deleted = outputFile.delete();
-            if (!deleted) {
-                Log.e("VideoCompression", "Failed to delete existing output file");
-                return false;
+    private void splitVideo(String inputPath, String chunkDir) {
+        File chunkDirectory = new File(chunkDir);
+        if (!chunkDirectory.exists()) {
+            boolean created = chunkDirectory.mkdirs();
+            if (!created) {
+                Log.e("VideoCompressionWorker", "Failed to create chunk directory.");
+                return;
             }
         }
-        String cmd = String.format(
-                "-i %s -vcodec libx264 -crf 30 -preset veryfast -acodec aac -b:a 96k -movflags +faststart %s",
-                inputPath, outputPath
-        );
-        Log.d("VideoCompression", "Executing FFmpeg command: " + cmd);
-        com.arthenica.mobileffmpeg.Config.enableLogCallback(message -> {
-            Log.d("FFmpegLog", message.getText());
-        });
 
+//        if (chunkDirectory.exists()) {
+//            for (File file : chunkDirectory.listFiles()) {
+//                file.delete();
+//            }
+//        }
+        Log.d("splitVideo", "splitVideo: " + inputPath);
+
+        Log.d("splitVideo", "splitVideo:chunkDir " + chunkDir);
+
+        String cmd = String.format(
+                "-i %s -c copy -map 0 -segment_time 00:00:10 -f segment %s/chunk_%%03d.mp4",
+                inputPath, chunkDir
+        );
         int rc = FFmpeg.execute(cmd);
 
-        if (rc == 0) {
-            Log.d("VideoCompression", "Compression successful");
 
-            // Compression successful
-            return true;
-        } else {
-            Log.e("VideoCompression", "Compression failed with RC: " + rc);
-            printFFmpegLogs();
-
-            // Compression failed
-            return false;
+        Log.d("VideoCompressionWorker", "RC:9090" + rc);
+        if (rc != 0) {
+            Log.e("VideoCompressionWorker", "Failed to split video. RC: " + rc);
         }
     }
-    // Helper method to print FFmpeg logs
-    private void printFFmpegLogs() {
+
+    private void compressChunks(String chunkDir, String compressedChunkDir) {
+        Log.d("compressChunks", "compressChunks:chunkDir ");
+
+        File compressChunk = new File(compressedChunkDir);
+        if (!compressChunk.exists()) {
+            boolean created = compressChunk.mkdirs();
+            if (!created) {
+                Log.e("compressedChunkDir", "Failed to create chunk directory.");
+                return;
+            }
+        }
+//        if (compressChunk.exists()) {
+//            for (File file : compressChunk.listFiles()) {
+//                file.delete();
+//            }
+//        }
+
+        File[] chunks = new File(chunkDir).listFiles((dir, name) -> name.endsWith(".mp4"));
+        if (chunks == null || chunks.length == 0) {
+            Log.e("VideoCompressionWorker", "No valid chunks found to compress.");
+            return;
+        }
+        if (chunks == null) return;
+
+        for (File chunk : chunks) {
+            executorService.submit(() -> {
+                String compressedChunkPath = compressedChunkDir + "/compressed_" + chunk.getName();
+//                "-i %s -vcodec libx264 -crf 28 -preset veryfast -acodec aac -b:a 96k -movflags +faststart %s",
+//                "-i %s -vcodec libx264 -crf 28 -preset veryfast %s",
+                String cmd = String.format(
+                        "-y -i %s -vcodec libx264 -crf 28 -preset veryfast -acodec aac -b:a 96k -movflags +faststart %s",
+                        chunk.getPath(), compressedChunkPath
+                );
+                Log.d("FFmpegCommand", "Executing compression command: " + cmd);
+                Log.d("FFmpegDebug", "Chunk Input Path: " + chunk.getPath());
+                Log.d("FFmpegDebug", "Chunk Output Path: " + compressedChunkPath);
+                File compressedChunk = new File(compressedChunkPath);
+                if (compressedChunk.exists()) {
+                    Log.d("FFmpegDebug", "Compressed chunk exists: " + compressedChunkPath);
+                } else {
+                    Log.e("FFmpegDebug", "Compressed chunk does NOT exist: " + compressedChunkPath);
+                }
+
+
+                int rc = FFmpeg.execute(cmd);
+                Log.d("compressChunks", "compressChunks:rc "+rc);
+                if (rc != 0) {
+                    Log.e("VideoCompressionWorker", "Failed to compress chunk: " + chunk.getName() + ". RC: " + rc);
+                }
+            });
+        }
         com.arthenica.mobileffmpeg.Config.enableLogCallback(message -> {
             Log.d("FFmpegLog", message.getText());
         });
+    }
 
-        com.arthenica.mobileffmpeg.Config.enableStatisticsCallback(statistics -> {
-            Log.d("FFmpegStats", "Frame: " + statistics.getVideoFrameNumber() +
-                    ", Time: " + statistics.getTime() +
-                    ", FPS: " + statistics.getVideoFps());
-        });
+    private void mergeChunks(String compressedChunkDir, String finalOutputPath) {
+        File[] compressedChunks = new File(compressedChunkDir).listFiles((dir, name) -> name.endsWith(".mp4"));
+        if (compressedChunks == null) return;
+
+        StringBuilder fileList = new StringBuilder();
+        for (File chunk : compressedChunks) {
+            fileList.append("file '").append(chunk.getPath()).append("'\n");
+        }
+        File listFile = new File(compressedChunkDir, "file_list.txt");
+        Log.e("VideoCompressionWorker:listFile", "listFile" + listFile);
+        try (FileWriter writer = new FileWriter(listFile)) {
+            writer.write(fileList.toString());
+        } catch (IOException e) {
+            Log.e("VideoCompressionWorker", "Failed to write file list for merging: " + e.getMessage());
+        }
+
+        String cmd = String.format(
+                "-f concat -safe 0 -i %s -c copy -y %s",
+                listFile.getPath(), finalOutputPath
+        );
+        int rc = FFmpeg.execute(cmd);
+        if (rc != 0) {
+            Log.e("VideoCompressionWorker", "Failed to merge chunks. RC: " + rc);
+        }
     }
 }

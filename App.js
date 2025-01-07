@@ -62,13 +62,25 @@ function HomeScreen() {
   const createNoMediaFile = async () => {
     try {
       const digiQCFolderPath = `${RNFetchBlob.fs.dirs.DCIMDir}/.digiQC/video`;
+      const digiQCChunkFolderPath = `${RNFetchBlob.fs.dirs.DCIMDir}/.digiQC/video/chunks`;
+      const digiQCChunkCompressedFolderPath = `${RNFetchBlob.fs.dirs.DCIMDir}/.digiQC/video/compressed_chunks`;
       // Check if the directory exists; if not, create it
       const folderExists = await RNFetchBlob.fs.isDir(digiQCFolderPath);
+      const folderOneExists = await RNFetchBlob.fs.isDir(digiQCChunkFolderPath);
+      const folderTwoExists = await RNFetchBlob.fs.isDir(
+        digiQCChunkCompressedFolderPath,
+      );
       if (!folderExists) {
         await RNFetchBlob.fs.mkdir(digiQCFolderPath);
       }
+      if (!folderOneExists) {
+        await RNFetchBlob.fs.mkdir(digiQCChunkFolderPath);
+      }
+      if (!folderTwoExists) {
+        await RNFetchBlob.fs.mkdir(digiQCChunkCompressedFolderPath);
+      }
     } catch (error) {
-      Logger.error('Error creating .digiqc folder' + error);
+      // Logger.error('Error creating .digiqc folder' + error);
     }
   };
 
